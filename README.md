@@ -1,12 +1,19 @@
-# React + Vite
+Blog Application 
+Technologies: React, Redux, Rich Text Editor (RTE), Appwrite (authentication, database, storage)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project Summary
+This full-stack blog platform features real-time slug generation, secure user authentication, state-driven UI updates, and cloud-based data management. Built with a React frontend using Redux for global state, the app connects to Appwrite for backend services including authorization, database storage, and file hosting.
 
-Currently, two official plugins are available:
+Features & Technical Highlights
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Real-Time Slug Generation: As users compose titles in the RTE, the application automatically creates URL-friendly slugs—lowercased, hyphen-separated, and sanitized—stored in Redux for instant synchronization across the UI.
 
-## Expanding the ESLint configuration
+Authentication Management: The auth.js service interfaces with Appwrite’s account API. It handles authentication workflows, captures authorization errors (e.g., missing account scope leading to 401), and provides fallback flows to maintain app stability.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+State Management with Redux: Centralized state includes user session status, editor content, dynamically generated slugs, and post data, enabling seamless UI updates such as conditional rendering of navigation elements.
+
+Controlled Navigation Flow: Navigation items like "Add Post," "All Posts," "Login," and "Signup" toggle dynamically based on authentication state managed via Redux, enhancing user experience and security.
+
+Backend CRUD Operations: Leveraged Appwrite’s database and storage APIs for creating, retrieving, and editing blog posts, while using slugs for SEO-friendly navigation and real-time previewing.
+
+Error Handling & Resilience: Authentication errors are caught and handled gracefully to avoid unhandled UI exceptions—ensuring prompt redirection to login or notifying the user when needed.
